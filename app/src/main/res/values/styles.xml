@@ -2,9 +2,13 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorControlNormal">#ffffff</item>
-        <item name="colorControlActivated">@color/accent</item>
-        <item name="colorControlHighlight">@color/accent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--<item name="colorControlNormal">#ffffff</item>-->
+        <!--<item name="colorControlActivated">@color/accent</item>-->
+        <!--<item name="colorControlHighlight">@color/accent</item>-->
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
         <item name="android:autoCompleteTextViewStyle">@style/RobotoAutoCompleteTextViewStyle</item>
         <item name="android:editTextStyle">@style/RobotoEditTextStyle</item>
@@ -22,8 +26,6 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
-    <color name="accent">#ffffff</color>
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -36,11 +38,11 @@
 
     <style name="TextLabel" parent="TextAppearance.AppCompat">
         <!-- Hint color and label color in FALSE state -->
-        <item name="android:textColorHint">@color/red</item>
+        <item name="android:textColorHint">@color/label</item>
 
         <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
-        <item name="colorAccent">@color/red2</item>
-        <item name="colorControlNormal">@color/red</item>
-        <item name="colorControlActivated">@color/red2</item>
+        <item name="colorAccent">@color/label_selected</item>
+        <item name="colorControlNormal">@color/label_selected</item>
+        <item name="colorControlActivated">@color/label_selected</item>
     </style>
 </resources>
