@@ -11,7 +11,7 @@
     <string name="title_activity_homepage">Home</string>
     <string name="no_username">Please enter a username</string>
     <string name="no_password">Please enter a password</string>
-
+    <string name="login_fail">Some error occurred. Please try again!</string>
 
     <!--Homepage-->
     <string name="navigation_drawer_open">Open navigation drawer</string>

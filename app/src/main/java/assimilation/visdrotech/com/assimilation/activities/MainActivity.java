@@ -1,5 +1,6 @@
 package assimilation.visdrotech.com.assimilation.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -16,17 +17,22 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 import assimilation.visdrotech.com.assimilation.R;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
 import assimilation.visdrotech.com.assimilation.utils.baseApplicationClass;
 import assimilation.visdrotech.com.assimilation.utils.restClient;
 import assimilation.visdrotech.com.assimilation.utils.restInterface;
+import io.sentry.Sentry;
+import io.sentry.android.AndroidSentryClientFactory;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private String prefName =  ((baseApplicationClass) this.getApplication()).PREF_NAME ;
+    private String sentryDsn = ((baseApplicationClass) this.getApplication()).SENTRY_DSN;
     private EditText username,password;
     private Button signin;
     private ProgressBar loginProgress;
@@ -34,6 +40,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Context ctx = this.getApplicationContext();
+
+        // Use the Sentry DSN (client key) from the Project Settings page on Sentry
+        Sentry.init(sentryDsn, new AndroidSentryClientFactory(ctx));
+
+        // Alternatively, if you configured your DSN in a `sentry.properties`
+        // file (see the configuration documentation).
+        Sentry.init(new AndroidSentryClientFactory(ctx));
+
         if (checkIfLoginCredentialsAreStored()) {
             Intent i = new Intent(this,homepage.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -95,16 +110,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(i);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.no_username),
-                            Toast.LENGTH_SHORT).show();
-                    Log.d("loginCheck", "Failed" + response.code());
-                    Log.d(TAG, response.message());
+                    loginProgress.setVisibility(View.GONE);
+                    try {
+                        Toast.makeText(getApplicationContext(), response.errorBody().string(),
+                                Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        Sentry.capture(e);
+                        e.printStackTrace();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<loginSuccess> call, Throwable t) {
-
+                Sentry.capture(t);
+                loginProgress.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(), getString(R.string.login_fail),
+                        Toast.LENGTH_SHORT).show();
             }
         });
 //        String url = "api/login";

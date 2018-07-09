@@ -19,7 +19,7 @@ public interface restInterface {
     @FormUrlEncoded
     Call<loginSuccess> login(@Field("username") String username,
                              @Field("password") String password,
-                             @Field("devxiceId") String deviceId
+                             @Field("deviceId") String deviceId
                              );
 
 //    @GET("movie/{id}")
