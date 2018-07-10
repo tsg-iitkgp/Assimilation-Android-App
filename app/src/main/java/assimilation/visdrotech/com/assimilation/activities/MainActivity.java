@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
-
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Context ctx = this.getApplicationContext();
-
+        Log.d("Sentry", sentryDsn);
         // Use the Sentry DSN (client key) from the Project Settings page on Sentry
         Sentry.init(sentryDsn, new AndroidSentryClientFactory(ctx));
 
@@ -100,9 +100,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     SharedPreferences.Editor editor = getSharedPreferences(prefName, MODE_PRIVATE).edit();
                     loginSuccess responseObject = response.body();
                     editor.putString("name",responseObject.getName());
-                    editor.putString("groups",responseObject.getGroups());
                     editor.putBoolean("isLoggedIn",true);
                     editor.putString("token", responseObject.getToken());
+                    editor.putString("helpers", responseObject.getHelpers());
+                    editor.putString("audience", responseObject.getAudience());
                     editor.apply();
                     loginProgress.setVisibility(View.GONE);
                     Intent i = new Intent(getApplicationContext(),homepage.class);

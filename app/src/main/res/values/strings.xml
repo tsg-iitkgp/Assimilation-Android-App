@@ -24,4 +24,11 @@
 
     <!--Create Event-->
     <string name="create_event_title">Create Event</string>
+    <string name="create_event_submit_button_text">Create Event</string>
+    <string name="create_event_notitle">Please enter a title</string>
+    <string name="create_event_nodescription">Please enter a description</string>
+    <string name="create_event_novenue">Please enter a venue</string>
+    <string name="create_event_nodate">Please select a date</string>
+    <string name="create_event_notime">Please select time</string>
+    <string name="create_event_fail">Some error occurred. Please try again!</string>
 </resources>

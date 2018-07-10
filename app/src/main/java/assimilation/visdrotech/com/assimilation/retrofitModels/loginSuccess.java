@@ -8,12 +8,15 @@ public class loginSuccess {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("groups")
+    @SerializedName("audience")
     @Expose
-    private String groups;
+    private String audience;
     @SerializedName("token")
     @Expose
     private String token;
+    @SerializedName("helpers")
+    @Expose
+    private String helpers;
 
     public String getName() {
         return name;
@@ -23,12 +26,12 @@ public class loginSuccess {
         this.name = name;
     }
 
-    public String getGroups() {
-        return groups;
+    public String getAudience() {
+        return audience;
     }
 
-    public void setGroups(String groups) {
-        this.groups = groups;
+    public void setAudience(String audience) {
+        this.audience = audience;
     }
 
     public String getToken() {
@@ -39,5 +42,12 @@ public class loginSuccess {
         this.token = token;
     }
 
-}
+    public String getHelpers() {
+        return helpers;
+    }
 
+    public void setHelpers(String helpers) {
+        this.helpers = helpers;
+    }
+
+}

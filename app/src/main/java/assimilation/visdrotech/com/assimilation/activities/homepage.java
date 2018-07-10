@@ -54,6 +54,7 @@ public class homepage extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         initialiseVariable();
+
     }
 
     private void initialiseVariable(){
