@@ -38,7 +38,7 @@
 
     <!--Mark Attendance-->
     <string name="title_activity_mark_attendance">Mark Attendance</string>
-    <string name="title_home">Home</string>
+    <string name="title_username">Enter Username</string>
     <string name="title_barcode">Scan ID card barcode</string>
     <string name="title_notifications">Notifications</string>
 

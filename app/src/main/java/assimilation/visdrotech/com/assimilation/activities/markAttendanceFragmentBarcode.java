@@ -46,18 +46,6 @@ public class markAttendanceFragmentBarcode extends Fragment {
         CodeScannerView scannerView = root.findViewById(R.id.scanner_view);
         eventId = activity.getIntent().getExtras().getString("eventUID");
         mCodeScanner = new CodeScanner(activity, scannerView);
-        pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
-        erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
-        erroDialog.setTitleText("Error!");
-        erroDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                mCodeScanner.startPreview();
-            }
-        });
         final restInterface restService = restClient.getClient().create(restInterface.class);
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
@@ -65,6 +53,10 @@ public class markAttendanceFragmentBarcode extends Fragment {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
+                        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                        pDialog.setTitleText("Loading");
+                        pDialog.setCancelable(false);
                         pDialog.show();
                         restService.markSingleAttendance(eventId, result.getText(), Boolean.TRUE).enqueue(new Callback<singleStudentAttendance>() {
                             @Override
@@ -73,16 +65,12 @@ public class markAttendanceFragmentBarcode extends Fragment {
                                 if (response.isSuccessful()) {
                                     singleStudentAttendance responseObj = response.body();
                                     if (responseObj.getAttendanceStatus()) {
-
                                         final SweetAlertDialog successAlertDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE);
                                         successAlertDialog.setTitleText("Success!");
                                         successAlertDialog.setContentText("Attendance marked successfully!");
-                                        successAlertDialog.setCanceledOnTouchOutside(false);
-                                        successAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        successAlertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                             @Override
-                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                              successAlertDialog.dismissWithAnimation();
-                                                mCodeScanner.startPreview();
+                                            public void onDismiss(DialogInterface dialog) {
                                                 mCodeScanner.startPreview();
                                             }
                                         });
@@ -142,6 +130,8 @@ public class markAttendanceFragmentBarcode extends Fragment {
             @Override
             public void onClick(View view) {
                 mCodeScanner.startPreview();
+                Log.d("ATCHECK","scanner clicked");
+
             }
         });
         return root;

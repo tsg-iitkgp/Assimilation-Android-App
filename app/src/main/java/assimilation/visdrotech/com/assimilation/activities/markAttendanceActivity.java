@@ -55,6 +55,8 @@ public class markAttendanceActivity extends AppCompatActivity {
             case R.id.navigation_barcode :
                 fragment = new markAttendanceFragmentBarcode();
                 break;
+            case R.id.navigation_enter_username :
+                fragment = new markAttendanceFragmentUsername();
         }
         //replacing the fragment
         if (fragment != null) {
