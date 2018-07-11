@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_margin="4dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleLabel"
+            android:gravity="center_horizontal"
+            android:text="Title"
+            android:textSize="@dimen/event_view_label"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:gravity="center_horizontal"
+            android:text="Event Title"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/descLabel"
+            android:gravity="center_horizontal"
+            android:text="Description"
+            android:textSize="@dimen/event_view_label"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/desc"
+            android:gravity="center_horizontal"
+            android:text="Event Description"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/venueLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Venue"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/venue"
+            android:gravity="center_horizontal"
+            android:text="Event Venue"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Date"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:gravity="center_horizontal"
+            android:text="Event Date"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Time"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/time"
+            android:gravity="center_horizontal"
+            android:text="Event time"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/createdByLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Created By"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/createdBy"
+            android:gravity="center_horizontal"
+            android:text="Event created by"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/helpersLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Helpers"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/helpers"
+            android:gravity="center_horizontal"
+            android:text="Event helpers"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:id="@+id/llRole"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/roleLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Role"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/role"
+            android:gravity="center_horizontal"
+            android:text="Event role"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/audienceLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Audience"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/audience"
+            android:gravity="center_horizontal"
+            android:text="Event audience"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="3"
+        android:layout_marginTop="4dp"
+        android:id="@+id/lleventButton"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text = "Mark Attendance"
+            android:id="@+id/markattendance"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/editevent"
+            android:text="Edit Event"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/deleteevent"
+            android:text="Delete Event"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>

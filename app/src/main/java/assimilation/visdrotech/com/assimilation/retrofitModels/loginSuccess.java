@@ -17,6 +17,18 @@ public class loginSuccess {
     @SerializedName("helpers")
     @Expose
     private String helpers;
+    @SerializedName("isAttendanceTaker")
+    @Expose
+    private Boolean isAttendanceTaker;
+    @SerializedName("isSuperAdmin")
+    @Expose
+    private Boolean isSuperAdmin;
+    @SerializedName("isStudent")
+    @Expose
+    private Boolean isStudent;
+    @SerializedName("isGymakhanaGsec")
+    @Expose
+    private Boolean isGymakhanaGsec;
 
     public String getName() {
         return name;
@@ -48,6 +60,38 @@ public class loginSuccess {
 
     public void setHelpers(String helpers) {
         this.helpers = helpers;
+    }
+
+    public Boolean getIsAttendanceTaker() {
+        return isAttendanceTaker;
+    }
+
+    public void setIsAttendanceTaker(Boolean isAttendanceTaker) {
+        this.isAttendanceTaker = isAttendanceTaker;
+    }
+
+    public Boolean getIsSuperAdmin() {
+        return isSuperAdmin;
+    }
+
+    public void setIsSuperAdmin(Boolean isSuperAdmin) {
+        this.isSuperAdmin = isSuperAdmin;
+    }
+
+    public Boolean getIsStudent() {
+        return isStudent;
+    }
+
+    public void setIsStudent(Boolean isStudent) {
+        this.isStudent = isStudent;
+    }
+
+    public Boolean getIsGymakhanaGsec() {
+        return isGymakhanaGsec;
+    }
+
+    public void setIsGymakhanaGsec(Boolean isGymakhanaGsec) {
+        this.isGymakhanaGsec = isGymakhanaGsec;
     }
 
 }

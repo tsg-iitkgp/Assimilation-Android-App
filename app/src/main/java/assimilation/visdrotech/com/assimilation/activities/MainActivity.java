@@ -104,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     editor.putString("token", responseObject.getToken());
                     editor.putString("helpers", responseObject.getHelpers());
                     editor.putString("audience", responseObject.getAudience());
+                    editor.putBoolean("isAttendanceTaker", responseObject.getIsAttendanceTaker());
+                    editor.putBoolean("isSuperAdmin", responseObject.getIsSuperAdmin());
+                    editor.putBoolean("isStudent", responseObject.getIsStudent());
+                    editor.putBoolean("isGymakhanaGsec", responseObject.getIsGymakhanaGsec());
                     editor.apply();
                     loginProgress.setVisibility(View.GONE);
                     Intent i = new Intent(getApplicationContext(),homepage.class);

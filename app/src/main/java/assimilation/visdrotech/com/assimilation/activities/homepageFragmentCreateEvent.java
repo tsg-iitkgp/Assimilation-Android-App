@@ -299,10 +299,10 @@ public class homepageFragmentCreateEvent extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
-                                FragmentManager fm = getActivity().getSupportFragmentManager();
-                                if(fm.getBackStackEntryCount()>0) {
-                                    fm.popBackStack();
-                                }
+//                                FragmentManager fm = getActivity().getSupportFragmentManager();
+//                                if(fm.getBackStackEntryCount()>0) {
+//                                    fm.popBackStack();
+//                                }
                             }
                         });
                         sd.setCanceledOnTouchOutside(false);

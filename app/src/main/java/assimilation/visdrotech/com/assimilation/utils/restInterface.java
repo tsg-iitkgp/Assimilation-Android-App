@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import assimilation.visdrotech.com.assimilation.retrofitModels.UpcomingEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.createEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
 import retrofit2.Call;
@@ -38,6 +39,12 @@ public interface restInterface {
                                  @Field("audience") String audience,
                                  @Field("helpers") ArrayList<String> helpers
                        );
+
+    @POST("api/upcomingevent")
+    @FormUrlEncoded
+    Call<UpcomingEvent> upcomingEvent(@Field("token") String token
+
+    );
 //    @GET("movie/{id}")
 //    Call<MoviesResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
 }

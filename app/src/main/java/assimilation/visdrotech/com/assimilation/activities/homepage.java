@@ -136,6 +136,9 @@ public class homepage extends AppCompatActivity
             case R.id.nav_createEvent :
                 fragment = new homepageFragmentCreateEvent();
                 break;
+            case R.id.nav_upcomingevent :
+                fragment = new homepageFragmnetUpcomingEvent();
+                break;
         }
         //replacing the fragment
         if (fragment != null) {
