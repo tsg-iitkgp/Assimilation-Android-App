@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import assimilation.visdrotech.com.assimilation.retrofitModels.UpcomingEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.createEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
+import assimilation.visdrotech.com.assimilation.retrofitModels.singleStudentAttendance;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -43,8 +44,14 @@ public interface restInterface {
     @POST("api/upcomingevent")
     @FormUrlEncoded
     Call<UpcomingEvent> upcomingEvent(@Field("token") String token
-
     );
+
+    @POST("api/singlestudentattendance")
+    @FormUrlEncoded
+    Call<singleStudentAttendance> markSingleAttendance(@Field("eventUid") String eventId,
+                                                       @Field("username") String username,
+                                                       @Field("status") Boolean status
+        );
 //    @GET("movie/{id}")
 //    Call<MoviesResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
 }

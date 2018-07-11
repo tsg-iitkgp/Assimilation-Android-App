@@ -35,4 +35,13 @@
 
     <!--Upcoming Event-->
     <string name="upcoming_event_title">Upcoming Event</string>
+
+    <!--Mark Attendance-->
+    <string name="title_activity_mark_attendance">Mark Attendance</string>
+    <string name="title_home">Home</string>
+    <string name="title_barcode">Scan ID card barcode</string>
+    <string name="title_notifications">Notifications</string>
+
+
+
 </resources>

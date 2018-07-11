@@ -1,6 +1,7 @@
 package assimilation.visdrotech.com.assimilation.activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -139,6 +140,14 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
                                 else {
                                     Button editevent = (Button) dialog.findViewById(R.id.editevent);
                                     Button markAttendance = (Button) dialog.findViewById(R.id.markattendance);
+                                    markAttendance.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent i = new Intent(getContext(), markAttendanceActivity.class);
+                                            i.putExtra("eventUID", it.getUid());
+                                            startActivity(i);
+                                        }
+                                    });
                                     Button deleteEvent = (Button) dialog.findViewById(R.id.deleteevent);
                                     if (it.getDeleteFlag()) {
 
@@ -164,4 +173,6 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
             }
         });
     }
+
+
 }
