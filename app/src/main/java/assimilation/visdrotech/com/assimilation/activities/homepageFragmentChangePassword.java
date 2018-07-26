@@ -103,27 +103,38 @@ public class homepageFragmentChangePassword extends Fragment {
             public void onResponse(Call<changePassword> call, Response<changePassword> response) {
                 pDialog.dismissWithAnimation();
                 if (response.isSuccessful()){
-                    final SweetAlertDialog successAlertDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE);
-                    successAlertDialog.setTitleText("Success!");
-                    successAlertDialog.setContentText("Password Changed successfully!");
-                    successAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                            successAlertDialog.dismissWithAnimation();
-                            Intent i = new Intent(getContext(),homepage.class);
-                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
-                        }
-                    });
-                    successAlertDialog.show();
-                    password.getText().clear();
-                    repassword.getText().clear();
+                    changePassword obj = response.body();
+                    if (obj.getPasswordChangeStatus()) {
+
+                        final SweetAlertDialog successAlertDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE);
+                        successAlertDialog.setTitleText("Success!");
+                        successAlertDialog.setContentText("Password Changed successfully!");
+                        successAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                successAlertDialog.dismissWithAnimation();
+                                Intent i = new Intent(getContext(), homepage.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                            }
+                        });
+                        successAlertDialog.show();
+                        password.getText().clear();
+                        repassword.getText().clear();
+                    }
+                    else {
+                        SweetAlertDialog erroDialog;
+                        erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
+                        erroDialog.setTitleText("Error!");
+                        erroDialog.setContentText("Unable to change password. Please try again!")  ;
+                        erroDialog.show();
+                    }
                 }
                 else {
                     SweetAlertDialog erroDialog;
                     erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
                     erroDialog.setTitleText("Error!");
-                    erroDialog.setContentText("Unable to mark attendance. Please try again!")  ;
+                    erroDialog.setContentText("Unable to change password. Please try again!")  ;
                     erroDialog.show();
                 }
 
@@ -135,7 +146,7 @@ public class homepageFragmentChangePassword extends Fragment {
                 SweetAlertDialog erroDialog;
                 erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
                 erroDialog.setTitleText("Error!");
-                erroDialog.setContentText("Unable to mark attendance. Please try again!")  ;
+                erroDialog.setContentText("Unable to change password. Please try again!")  ;
                 erroDialog.show();
             }
         });

@@ -12,6 +12,7 @@ import assimilation.visdrotech.com.assimilation.retrofitModels.UpcomingEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.changePassword;
 import assimilation.visdrotech.com.assimilation.retrofitModels.checkboxAttendanceStudentList;
 import assimilation.visdrotech.com.assimilation.retrofitModels.createEvent;
+import assimilation.visdrotech.com.assimilation.retrofitModels.deleteEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
 import assimilation.visdrotech.com.assimilation.retrofitModels.singleStudentAttendance;
 import retrofit2.Call;
@@ -64,5 +65,10 @@ public interface restInterface {
     @FormUrlEncoded
     Call<changePassword> changePassword(@Field("token") String token,
                                         @Field("password") String password);
+
+    @POST("api/deleteevent")
+    @FormUrlEncoded
+    Call<deleteEvent> deleteEvent (@Field("token") String token,
+                                   @Field("eventUid") String eventUid);
 
 }

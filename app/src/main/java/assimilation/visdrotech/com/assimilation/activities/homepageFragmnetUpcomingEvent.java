@@ -25,6 +25,7 @@ import java.util.List;
 import assimilation.visdrotech.com.assimilation.R;
 import assimilation.visdrotech.com.assimilation.retrofitModels.EventDatum;
 import assimilation.visdrotech.com.assimilation.retrofitModels.UpcomingEvent;
+import assimilation.visdrotech.com.assimilation.retrofitModels.deleteEvent;
 import assimilation.visdrotech.com.assimilation.utils.baseApplicationClass;
 import assimilation.visdrotech.com.assimilation.utils.restClient;
 import assimilation.visdrotech.com.assimilation.utils.restInterface;
@@ -42,7 +43,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class homepageFragmnetUpcomingEvent extends Fragment {
     private String prefName ;
     private String token;
-    SweetAlertDialog pDialog;
+    SweetAlertDialog pDialog,pDialogDeleteEvent;
     private static final String TAG = "FragmnetUpcomingEvent";
     private TableLayout table;
     private Boolean isAttendanceTaker;
@@ -71,7 +72,7 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
         renderData(view);
     }
 
-    public void renderData(View view){
+    public void renderData(final View view){
         prefName =  ((baseApplicationClass) getActivity().getApplication()).PREF_NAME ;
         SharedPreferences prefs = this.getActivity().getSharedPreferences(prefName, MODE_PRIVATE);
         token = prefs.getString("token", "");
@@ -82,7 +83,7 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        restInterface restService = restClient.getClient().create(restInterface.class);
+        final restInterface restService = restClient.getClient().create(restInterface.class);
         restService.upcomingEvent(token).enqueue(new Callback<UpcomingEvent>() {
             @Override
             public void onResponse(Call<UpcomingEvent> call, Response<UpcomingEvent> response) {
@@ -162,8 +163,86 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
                                             startActivity(i);
                                         }
                                     });
-                                    Button deleteEvent = (Button) dialog.findViewById(R.id.deleteevent);
+                                    final Button deleteEvent = (Button) dialog.findViewById(R.id.deleteevent);
                                     if (it.getDeleteFlag()) {
+
+                                        deleteEvent.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                                                        .setTitleText("Are you sure?")
+                                                        .setContentText("Won't be able to recover this event!")
+                                                        .setConfirmText("Yes,delete it!")
+                                                        .setCancelText("Cancel")
+                                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                            @Override
+                                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                                sweetAlertDialog.dismissWithAnimation();
+                                                                pDialogDeleteEvent = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
+                                                                pDialogDeleteEvent.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                                                                pDialogDeleteEvent.setTitleText("Loading");
+                                                                pDialogDeleteEvent.setCancelable(false);
+                                                                pDialogDeleteEvent.show();
+                                                                restService.deleteEvent(token,it.getUid()).enqueue(new Callback<assimilation.visdrotech.com.assimilation.retrofitModels.deleteEvent>() {
+                                                                    @Override
+                                                                    public void onResponse(Call<deleteEvent> call, Response<deleteEvent> response) {
+                                                                        pDialogDeleteEvent.dismissWithAnimation();
+                                                                        if (response.isSuccessful()){
+                                                                            deleteEvent obj = response.body();
+                                                                            if (obj.getdeleteStatus()){
+                                                                                final SweetAlertDialog successAlertDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE);
+                                                                                successAlertDialog.setTitleText("Success!");
+                                                                                successAlertDialog.setContentText("Event deleted successfully!");
+                                                                                successAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                                                    @Override
+                                                                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                                                        sweetAlertDialog.dismissWithAnimation();
+                                                                                        dialog.dismiss();
+                                                                                        renderData(view);
+                                                                                    }
+                                                                                });
+                                                                                successAlertDialog.show();
+                                                                            }else {
+                                                                                SweetAlertDialog erroDialog;
+                                                                                erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
+                                                                                erroDialog.setTitleText("Error!");
+                                                                                erroDialog.setContentText("Unable to delete event. Please try again!")  ;
+                                                                                erroDialog.show();}
+                                                                        }
+                                                                        else {
+                                                                            SweetAlertDialog erroDialog;
+                                                                            erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
+                                                                            erroDialog.setTitleText("Error!");
+                                                                            erroDialog.setContentText("Unable to delete event. Please try again!")  ;
+                                                                            erroDialog.show();
+                                                                        }
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onFailure(Call<deleteEvent> call, Throwable t) {
+                                                                        pDialogDeleteEvent.dismissWithAnimation();
+                                                                        SweetAlertDialog erroDialog;
+                                                                        erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
+                                                                        erroDialog.setTitleText("Error!");
+                                                                        erroDialog.setContentText("Unable to delete event. Please try again!")  ;
+                                                                        erroDialog.show();
+                                                                    }
+                                                                });
+
+                                                            }
+                                                        })
+                                                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                            @Override
+                                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                                sweetAlertDialog.dismissWithAnimation();
+                                                            }
+                                                        })
+                                                        .show();
+
+
+
+                                            }
+                                        });
 
                                     }else {
                                         deleteEvent.setAlpha(.5f);
