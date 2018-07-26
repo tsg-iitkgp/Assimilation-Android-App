@@ -44,23 +44,61 @@
                 <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:orientation="vertical">
 
-                    <EditText android:id="@+id/username" android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:hint="@string/prompt_email"
-                        android:inputType = "text"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:layout_marginBottom="10dp"
-                        android:textColorHint="#ffffffff"
-                        android:textColor="#ffffffff" />
 
-                    <EditText android:id="@+id/password" android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:hint="@string/prompt_password"
-                        android:imeActionLabel="@string/action_sign_in"
-                        android:imeOptions="actionUnspecified" android:inputType="textPassword"
-                        android:maxLines="1" android:singleLine="true"
-                        android:layout_marginBottom="10dp"
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:textColorHint="#ffffffff"
-                        android:textColor="#ffffffff" />
+                        android:textColor="#ffffffff"
+                        android:layout_marginBottom="8dp">
+                        <android.support.design.widget.TextInputEditText android:id="@+id/username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="#ffffffff"
+                        android:hint="@string/prompt_email" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <!--<EditText android:id="@+id/username" android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content" android:hint="@string/prompt_email"-->
+                        <!--android:inputType = "text"-->
+                        <!--android:maxLines="1"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:layout_marginBottom="10dp"-->
+                        <!--android:textColorHint="#ffffffff"-->
+                        <!--android:textColor="#ffffffff" />-->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:textColorHint="#ffffffff"
+                        android:textColor="#ffffffff"
+                        android:layout_marginBottom="8dp">
+                        <android.support.design.widget.TextInputEditText android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:textColor="#ffffffff"
+                            android:imeOptions="actionUnspecified"
+                            android:imeActionLabel="@string/action_sign_in"
+                            android:singleLine="true"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/prompt_password" />
+                    </android.support.design.widget.TextInputLayout>
+                    <!--<EditText android:id="@+id/password" android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content" android:hint="@string/prompt_password"-->
+                        <!--android:imeActionLabel="@string/action_sign_in"-->
+                        <!--android:imeOptions="actionUnspecified" android:inputType="textPassword"-->
+                        <!--android:maxLines="1" android:singleLine="true"-->
+                        <!--android:layout_marginBottom="10dp"-->
+                        <!--android:textColorHint="#ffffffff"-->
+                        <!--android:textColor="#ffffffff" />-->
 
                     <Button android:id="@+id/signin" style="?android:textAppearanceSmall"
                         android:layout_width="match_parent" android:layout_height="wrap_content"
