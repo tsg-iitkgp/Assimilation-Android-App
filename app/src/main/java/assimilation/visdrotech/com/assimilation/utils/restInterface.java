@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import assimilation.visdrotech.com.assimilation.retrofitModels.UpcomingEvent;
+import assimilation.visdrotech.com.assimilation.retrofitModels.changePassword;
 import assimilation.visdrotech.com.assimilation.retrofitModels.checkboxAttendanceStudentList;
 import assimilation.visdrotech.com.assimilation.retrofitModels.createEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
@@ -58,4 +59,10 @@ public interface restInterface {
     @POST("api/getstudentattendancelist")
     @FormUrlEncoded
     Call<checkboxAttendanceStudentList> getAllStudentsAttendanceList(@Field("eventUid") String eventUid);
+
+    @POST("api/changepassword")
+    @FormUrlEncoded
+    Call<changePassword> changePassword(@Field("token") String token,
+                                        @Field("password") String password);
+
 }

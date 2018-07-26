@@ -91,6 +91,7 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
                 if (response.isSuccessful()) {
                     List<EventDatum> responseList = response.body().getEventData();
                     LayoutInflater inflater = LayoutInflater.from(getContext());
+                    cleanTable(table);
                     for (final EventDatum it : responseList) {
 
                         View tr = inflater.inflate(R.layout.upcoming_event_table_row, null,false);
@@ -151,7 +152,7 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
                                     lleventButton.setVisibility(View.GONE);
                                 }
                                 else {
-                                    Button editevent = (Button) dialog.findViewById(R.id.editevent);
+
                                     Button markAttendance = (Button) dialog.findViewById(R.id.markattendance);
                                     markAttendance.setOnClickListener(new View.OnClickListener() {
                                         @Override
@@ -178,14 +179,35 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
                         Log.d(TAG, it.getTitle());
                     }
                 }
+                else {
+                    SweetAlertDialog erroDialog;
+                    erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
+                    erroDialog.setTitleText("Error!");
+                    erroDialog.setContentText("Unable to refresh data. Please try again!")  ;
+                    erroDialog.show();
+                }
             }
 
             @Override
             public void onFailure(Call<UpcomingEvent> call, Throwable t) {
                 swipeLayout.setRefreshing(false);
+                Log.d(TAG, "In on fail");
+                SweetAlertDialog erroDialog;
+                erroDialog =  new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE);
+                erroDialog.setTitleText("Error!");
+                erroDialog.setContentText("Unable to refresh data. Please try again!")  ;
+                erroDialog.show();
             }
         });
     }
 
+    private void cleanTable(TableLayout table) {
 
+        int childCount = table.getChildCount();
+
+        // Remove all rows except the first one
+        if (childCount > 1) {
+            table.removeViews(1, childCount - 1);
+        }
+    }
 }

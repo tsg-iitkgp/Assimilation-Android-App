@@ -51,7 +51,7 @@ public class homepage extends AppCompatActivity
 
         }
         initialiseVariable();
-
+        displayFragment(R.id.nav_upcomingevent);
     }
 
     private void initialiseVariable(){
@@ -130,6 +130,9 @@ public class homepage extends AppCompatActivity
                 break;
             case R.id.nav_upcomingevent :
                 fragment = new homepageFragmnetUpcomingEvent();
+                break;
+            case R.id.nav_changepassword :
+                fragment = new homepageFragmentChangePassword();
                 break;
         }
         //replacing the fragment

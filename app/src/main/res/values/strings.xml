@@ -23,6 +23,7 @@
     <string name="action_logout">Logout</string>
     <string name="navbar_createevent">Create new event</string>
     <string name="navbar_upcomingevent">Upcoming event</string>
+    <string name="navbar_changepassword">Change Password</string>
 
 
     <!--Create Event-->
@@ -45,5 +46,10 @@
     <string name="title_checkbox">Checkbox</string>
     <string name="mark_attendance_checkbox_submit_button">Submit Attendance</string>
 
-
+    <!--Change Password-->
+    <string name="change_password_title">Change Password</string>
+    <string name="change_password_password_label">Password</string>
+    <string name="change_password_password_again_label">Re-type Password</string>
+    <string name="no_password_entered">Please enter a password</string>
+    <string name="no_repassword_entered">Please enter the password again.</string>
 </resources>

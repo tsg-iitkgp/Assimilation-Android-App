@@ -302,6 +302,9 @@ public class homepageFragmentCreateEvent extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
+                                Intent i = new Intent(getContext(),homepage.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
 //                                FragmentManager fm = getActivity().getSupportFragmentManager();
 //                                if(fm.getBackStackEntryCount()>0) {
 //                                    fm.popBackStack();
@@ -310,6 +313,8 @@ public class homepageFragmentCreateEvent extends Fragment {
                         });
                         sd.setCanceledOnTouchOutside(false);
                         sd.show();
+
+
                     }
                     else {
                         new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE)
