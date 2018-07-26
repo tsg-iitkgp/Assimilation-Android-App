@@ -286,12 +286,6 @@
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:id="@+id/editevent"
-            android:text="Edit Event"
-            android:layout_height="wrap_content" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
             android:id="@+id/deleteevent"
             android:text="Delete Event"
             android:layout_height="wrap_content" />
