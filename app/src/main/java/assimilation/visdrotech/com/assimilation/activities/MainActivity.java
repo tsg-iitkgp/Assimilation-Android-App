@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (task.getResult().getToken() != null){
                         token = task.getResult().getToken();
+                            Log.d(TAG,token);
                     }}
                 });
         Context ctx = this.getApplicationContext();
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginProgress.setVisibility(View.VISIBLE);
         restInterface restService = restClient.getClient().create(restInterface.class);
 //        Call<loginSuccess> call= restService.login();
+
         restService.login(uname,pass,token).enqueue(new Callback<loginSuccess>() {
             @Override
             public void onResponse(Call<loginSuccess> call, Response<loginSuccess> response) {
