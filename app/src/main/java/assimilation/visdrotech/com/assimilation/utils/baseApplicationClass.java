@@ -6,7 +6,7 @@ import android.content.res.Configuration;
 
 public class baseApplicationClass extends Application {
     public static final String PREF_NAME = "PrefNameAssimilation";
-    public static final String SENTRY_DSN = "https://fcc76b9d4ba442c5a7990c6ef4e14213@sentry.io/1239769";
+    public static final String SENTRY_DSN = "";
     // Called when the application is starting, before any other application objects have been created.
     // Overriding this method is totally optional!
     @Override

@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -69,8 +70,7 @@ public class homepageFragmentCreateEvent extends Fragment {
     private ArrayList<String> helperUserNames, helperNameToShowOnEditText;
     private CharSequence[] helperNames;
     private boolean[] checkedHelper;
-    private ProgressBar loginProgress;
-
+    private SweetAlertDialog pDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //returning our layout file
@@ -115,7 +115,6 @@ public class homepageFragmentCreateEvent extends Fragment {
         description = (TextInputEditText) v.findViewById(R.id.description);
         venue = (TextInputEditText) v.findViewById(R.id.venue);
         submit = (Button) v.findViewById(R.id.submitButton);
-        loginProgress = (ProgressBar) v.findViewById(R.id.login_progress);
         date.setKeyListener(null);
         time.setKeyListener(null);
         helpers.setKeyListener(null);
@@ -283,12 +282,16 @@ public class homepageFragmentCreateEvent extends Fragment {
         Log.d("audience",stAudienceKey );
         Log.d("helpers", selectedHelperUsername.toString());
 
-        loginProgress.setVisibility(View.VISIBLE);
+        pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Loading");
+        pDialog.setCancelable(false);
+        pDialog.show();
         restInterface restService = restClient.getClient().create(restInterface.class);
         restService.createEvent(token,title,desc,venue,stDate,stTime,stAudienceKey,selectedHelperUsername).enqueue(new Callback<createEvent>() {
             @Override
             public void onResponse(Call<createEvent> call, Response<createEvent> response) {
-                loginProgress.setVisibility(View.GONE);
+                pDialog.dismissWithAnimation();
                 if (response.isSuccessful()){
                     createEvent createEventResponseObject = response.body();
                     if (createEventResponseObject.getSuccess()){
@@ -331,7 +334,7 @@ public class homepageFragmentCreateEvent extends Fragment {
                 Log.d(TAG, "in on fail");
                 Log.d(TAG, t.toString());
                 Sentry.capture(t);
-                loginProgress.setVisibility(View.GONE);
+                pDialog.dismissWithAnimation();
                 Toast.makeText(getContext(), getString(R.string.login_fail),
                         Toast.LENGTH_SHORT).show();
             }

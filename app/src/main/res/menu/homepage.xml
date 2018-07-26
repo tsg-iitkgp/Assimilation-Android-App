@@ -7,6 +7,12 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menu_refresh"
+        android:title="Refersh"
+        android:visible="false"
+        android:icon="@drawable/ic_refresh"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="@string/action_logout"

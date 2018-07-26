@@ -3,6 +3,7 @@ package assimilation.visdrotech.com.assimilation.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,22 +38,33 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private String prefName =  ((baseApplicationClass) this.getApplication()).PREF_NAME ;
-    private String sentryDsn = ((baseApplicationClass) this.getApplication()).SENTRY_DSN;
+
     private EditText username,password;
     private Button signin;
     private ProgressBar loginProgress;
     private final static String TAG = "mainActivity" ;
+    private String token = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Get token
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.getResult().getToken() != null){
+                        token = task.getResult().getToken();
+                    }}
+                });
         Context ctx = this.getApplicationContext();
+        String sentryDsn = getString(R.string.sentry_dsn);
         Log.d("Sentry", sentryDsn);
         // Use the Sentry DSN (client key) from the Project Settings page on Sentry
-        Sentry.init(sentryDsn, new AndroidSentryClientFactory(ctx));
-
-        // Alternatively, if you configured your DSN in a `sentry.properties`
-        // file (see the configuration documentation).
-        Sentry.init(new AndroidSentryClientFactory(ctx));
+        Sentry.init(getString(R.string.sentry_dsn), new AndroidSentryClientFactory(ctx));
+//
+//        // Alternatively, if you configured your DSN in a `sentry.properties`
+//        // file (see the configuration documentation).
+//        Sentry.init(new AndroidSentryClientFactory(ctx));
 
         if (checkIfLoginCredentialsAreStored()) {
             Intent i = new Intent(this,homepage.class);
@@ -93,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginProgress.setVisibility(View.VISIBLE);
         restInterface restService = restClient.getClient().create(restInterface.class);
 //        Call<loginSuccess> call= restService.login();
-        restService.login(uname,pass,"123").enqueue(new Callback<loginSuccess>() {
+        restService.login(uname,pass,token).enqueue(new Callback<loginSuccess>() {
             @Override
             public void onResponse(Call<loginSuccess> call, Response<loginSuccess> response) {
                 if (response.isSuccessful()) {

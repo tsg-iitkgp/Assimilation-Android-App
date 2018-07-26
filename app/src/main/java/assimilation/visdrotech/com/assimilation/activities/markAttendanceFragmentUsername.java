@@ -44,7 +44,6 @@ public class markAttendanceFragmentUsername extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final Activity activity = getActivity();
         //you can set the title for your toolbar here for different fragments different titles
-        getActivity().setTitle(getString(R.string.upcoming_event_title));
 
         edittext = (TextInputEditText) view.findViewById(R.id.username);
         submitButton = (Button) view.findViewById(R.id.submit);

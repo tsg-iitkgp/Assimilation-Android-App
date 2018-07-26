@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1035737268968",
+    "firebase_url": "https://assimilation-b1945.firebaseio.com",
+    "project_id": "assimilation-b1945",
+    "storage_bucket": "assimilation-b1945.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035737268968:android:85baa329ba33120d",
+        "android_client_info": {
+          "package_name": "assimilation.visdrotech.com.assimilation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035737268968-0c5hqkge6rshsb02c5h7pspsch6i2p64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAehEIeand21WIwJChQNWu-ein_1es0kNA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

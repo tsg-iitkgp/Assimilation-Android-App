@@ -29,4 +29,10 @@ dependencies {
     compile 'io.sentry:sentry-android:1.7.5'
     compile 'com.github.f0ris.sweetalert:library:1.5.3'
     implementation 'com.budiyev.android:code-scanner:1.9.1'
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
+    compile 'com.google.firebase:firebase-core:16.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
+
+

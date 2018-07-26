@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import assimilation.visdrotech.com.assimilation.retrofitModels.UpcomingEvent;
+import assimilation.visdrotech.com.assimilation.retrofitModels.checkboxAttendanceStudentList;
 import assimilation.visdrotech.com.assimilation.retrofitModels.createEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
 import assimilation.visdrotech.com.assimilation.retrofitModels.singleStudentAttendance;
@@ -52,6 +53,9 @@ public interface restInterface {
                                                        @Field("username") String username,
                                                        @Field("status") Boolean status
         );
-//    @GET("movie/{id}")
-//    Call<MoviesResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);
+
+
+    @POST("api/getstudentattendancelist")
+    @FormUrlEncoded
+    Call<checkboxAttendanceStudentList> getAllStudentsAttendanceList(@Field("eventUid") String eventUid);
 }

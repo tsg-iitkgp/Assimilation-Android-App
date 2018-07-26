@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,7 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
     private static final String TAG = "FragmnetUpcomingEvent";
     private TableLayout table;
     private Boolean isAttendanceTaker;
+    private SwipeRefreshLayout swipeLayout;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,11 +57,21 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
 
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle(getString(R.string.upcoming_event_title));
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                renderData(view);
+            }
+        });
+        renderData(view);
+    }
 
+    public void renderData(View view){
         prefName =  ((baseApplicationClass) getActivity().getApplication()).PREF_NAME ;
         SharedPreferences prefs = this.getActivity().getSharedPreferences(prefName, MODE_PRIVATE);
         token = prefs.getString("token", "");
@@ -75,6 +87,7 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
             @Override
             public void onResponse(Call<UpcomingEvent> call, Response<UpcomingEvent> response) {
                 pDialog.dismissWithAnimation();
+                swipeLayout.setRefreshing(false);
                 if (response.isSuccessful()) {
                     List<EventDatum> responseList = response.body().getEventData();
                     LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -169,7 +182,7 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
 
             @Override
             public void onFailure(Call<UpcomingEvent> call, Throwable t) {
-
+                swipeLayout.setRefreshing(false);
             }
         });
     }

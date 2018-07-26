@@ -57,6 +57,10 @@ public class markAttendanceActivity extends AppCompatActivity {
                 break;
             case R.id.navigation_enter_username :
                 fragment = new markAttendanceFragmentUsername();
+                break;
+            case R.id.navigation_checkbox :
+                fragment = new markAttendanceFragmentCheckbox();
+                break;
         }
         //replacing the fragment
         if (fragment != null) {

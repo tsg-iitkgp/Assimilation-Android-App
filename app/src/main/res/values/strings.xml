@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Assimilation</string>
 
+    <!--CONFIG-->
+    <string name="sentry_dsn">https://fcc76b9d4ba442c5a7990c6ef4e14213@sentry.io/1239769LOCAL</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Username</string>
     <string name="prompt_password">Password</string>
@@ -40,8 +42,8 @@
     <string name="title_activity_mark_attendance">Mark Attendance</string>
     <string name="title_username">Enter Username</string>
     <string name="title_barcode">Scan ID card barcode</string>
-    <string name="title_notifications">Notifications</string>
-
+    <string name="title_checkbox">Checkbox</string>
+    <string name="mark_attendance_checkbox_submit_button">Submit Attendance</string>
 
 
 </resources>
