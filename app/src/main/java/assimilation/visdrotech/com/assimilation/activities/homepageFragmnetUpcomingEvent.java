@@ -151,9 +151,21 @@ public class homepageFragmnetUpcomingEvent extends Fragment {
                                     llrole.setVisibility(View.GONE);
                                     LinearLayout lleventButton = (LinearLayout) dialog.findViewById(R.id.lleventButton);
                                     lleventButton.setVisibility(View.GONE);
+                                    Button complaintButton = (Button) dialog.findViewById(R.id.complaint);
+                                    complaintButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent i = new Intent(getContext(), raiseComplaint.class);
+                                            i.putExtra("eventUID", it.getUid());
+                                            i.putExtra("eventTitle", it.getTitle());
+                                            i.putExtra("eventDate", it.getDate());
+                                            startActivity(i);
+                                        }
+                                    });
                                 }
                                 else {
-
+                                    LinearLayout llcomplaint = (LinearLayout) dialog.findViewById(R.id.llComplaintButton);
+                                    llcomplaint.setVisibility(View.GONE);
                                     Button markAttendance = (Button) dialog.findViewById(R.id.markattendance);
                                     markAttendance.setOnClickListener(new View.OnClickListener() {
                                         @Override

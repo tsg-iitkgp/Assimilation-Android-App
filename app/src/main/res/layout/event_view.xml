@@ -291,6 +291,20 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="4dp"
+        android:id="@+id/llComplaintButton"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text = "Raise Complaint"
+            android:id="@+id/complaint"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 </LinearLayout>
 
 </ScrollView>

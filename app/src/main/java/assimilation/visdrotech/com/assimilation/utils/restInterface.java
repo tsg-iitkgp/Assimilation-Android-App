@@ -14,6 +14,7 @@ import assimilation.visdrotech.com.assimilation.retrofitModels.checkboxAttendanc
 import assimilation.visdrotech.com.assimilation.retrofitModels.createEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.deleteEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
+import assimilation.visdrotech.com.assimilation.retrofitModels.raiseComplaint;
 import assimilation.visdrotech.com.assimilation.retrofitModels.singleStudentAttendance;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -70,5 +71,12 @@ public interface restInterface {
     @FormUrlEncoded
     Call<deleteEvent> deleteEvent (@Field("token") String token,
                                    @Field("eventUid") String eventUid);
+
+    @POST("api/raisecomplaint")
+    @FormUrlEncoded
+    Call<raiseComplaint> raiseComplaint(@Field("eventUID") String eventUID,
+                                        @Field("complaint") String complaint,
+                                        @Field("token") String token
+                                        );
 
 }
