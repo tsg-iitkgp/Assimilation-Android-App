@@ -49,21 +49,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get token
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (task.getResult().getToken() != null){
-                        token = task.getResult().getToken();
-                            Log.d(TAG,token);
-                    }}
-                });
+
         Context ctx = this.getApplicationContext();
         String sentryDsn = getString(R.string.sentry_dsn);
         Log.d("Sentry", sentryDsn);
         // Use the Sentry DSN (client key) from the Project Settings page on Sentry
         Sentry.init(getString(R.string.sentry_dsn), new AndroidSentryClientFactory(ctx));
-//
+            FirebaseInstanceId.getInstance().getInstanceId()
+                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                            try {
+                            if (task.getResult().getToken() != null) {
+                                token = task.getResult().getToken();
+                                Log.d(TAG, token);
+                            }
+                            }
+                            catch (Exception e){
+                                Sentry.capture(e);
+                                e.printStackTrace();
+                                token = "";
+                            }
+                        }
+                    });
+
+        //
 //        // Alternatively, if you configured your DSN in a `sentry.properties`
 //        // file (see the configuration documentation).
 //        Sentry.init(new AndroidSentryClientFactory(ctx));
