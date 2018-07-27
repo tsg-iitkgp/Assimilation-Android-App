@@ -47,6 +47,7 @@ public class markAttendanceActivity extends AppCompatActivity {
 //        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        displayFragment(R.id.navigation_enter_username);
     }
 
     public void displayFragment(int itemId){
