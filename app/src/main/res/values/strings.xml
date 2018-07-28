@@ -23,6 +23,7 @@
     <string name="action_logout">Logout</string>
     <string name="navbar_createevent">Create new event</string>
     <string name="navbar_upcomingevent">Upcoming event</string>
+    <string name="navbar_complaint">Complaints</string>
     <string name="navbar_changepassword">Change Password</string>
 
 
@@ -39,6 +40,8 @@
     <!--Upcoming Event-->
     <string name="upcoming_event_title">Upcoming Event</string>
 
+    <!--All Complaints-->
+    <string name="allcomplaints_title">All Complaints</string>
     <!--Mark Attendance-->
     <string name="title_activity_mark_attendance">Mark Attendance</string>
     <string name="title_username">Enter Username</string>

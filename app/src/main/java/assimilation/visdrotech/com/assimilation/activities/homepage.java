@@ -61,6 +61,11 @@ public class homepage extends AppCompatActivity
             nav_Menu.findItem(R.id.nav_createEvent).setVisible(false);
 
         }
+        Boolean superAdminStatus = prefs.getBoolean("isSuperAdmin", false);
+        if (!(superAdminStatus)) {
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_complaint).setVisible(false);
+        }
         initialiseVariable();
 
 
@@ -153,6 +158,10 @@ public class homepage extends AppCompatActivity
             case R.id.nav_changepassword :
                 fragment = new homepageFragmentChangePassword();
                 break;
+            case R.id.nav_complaint :
+                fragment = new homepageFragmnetComplaints();
+                break;
+
         }
         //replacing the fragment
         if (fragment != null) {

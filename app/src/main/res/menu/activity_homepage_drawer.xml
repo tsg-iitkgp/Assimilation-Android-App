@@ -12,6 +12,12 @@
             android:id="@+id/nav_upcomingevent"
             android:icon="@drawable/ic_event"
             android:title="@string/navbar_upcomingevent" />
+
+        <item
+            android:id="@+id/nav_complaint"
+            android:icon="@drawable/ic_people"
+            android:title="@string/navbar_complaint" />
+
         <item
             android:id="@+id/nav_changepassword"
             android:icon="@drawable/ic_password"
