@@ -8,9 +8,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import assimilation.visdrotech.com.assimilation.retrofitModels.Complaints;
 import assimilation.visdrotech.com.assimilation.retrofitModels.UpcomingEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.changePassword;
 import assimilation.visdrotech.com.assimilation.retrofitModels.checkboxAttendanceStudentList;
+import assimilation.visdrotech.com.assimilation.retrofitModels.complaintStatus;
 import assimilation.visdrotech.com.assimilation.retrofitModels.createEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.deleteEvent;
 import assimilation.visdrotech.com.assimilation.retrofitModels.loginSuccess;
@@ -78,5 +80,12 @@ public interface restInterface {
                                         @Field("complaint") String complaint,
                                         @Field("token") String token
                                         );
+    @POST("api/allcomplaints")
+    @FormUrlEncoded
+    Call <Complaints> getAllComplaints(@Field("token") String token);
 
+    @POST("api/changecomplaintstatus")
+    @FormUrlEncoded
+    Call <complaintStatus> changeComplaintStatus(@Field("token") String token,
+                                                 @Field("complaintId") String id);
 }

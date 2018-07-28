@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_margin="4dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleLabel"
+            android:gravity="center_horizontal"
+            android:text="Event Title"
+            android:textSize="@dimen/event_view_label"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:gravity="center_horizontal"
+            android:text="Event Title"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/studentLabel"
+            android:gravity="center_horizontal"
+            android:text="Complaint By"
+            android:textSize="@dimen/event_view_label"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/student"
+            android:gravity="center_horizontal"
+            android:text="Student Name"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/complaintLabel"
+            android:gravity="center_horizontal"
+            android:text="Complaint"
+            android:textSize="@dimen/event_view_label"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/complaint"
+            android:gravity="center_horizontal"
+            android:text="Sample Comlaints"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/complaintdateLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Raised On"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/complaintdate"
+            android:gravity="center_horizontal"
+            android:text="Date time"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/venueLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Event Venue"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/venue"
+            android:gravity="center_horizontal"
+            android:text="Event Venue"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventdateLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Event Date"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventdate"
+            android:gravity="center_horizontal"
+            android:text="Event Date and time"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/createdByLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Created By"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/createdBy"
+            android:gravity="center_horizontal"
+            android:text="Event created by"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginBottom="@dimen/event_view_margin"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/helpersLabel"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/event_view_label"
+            android:text="Helpers"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/helpers"
+            android:gravity="center_horizontal"
+            android:text="Event helpers"
+            android:textSize="@dimen/event_view_value"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="4dp"
+        android:id="@+id/llComplaintButton"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text = "Mark As resolved"
+            android:id="@+id/complaintButton"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>

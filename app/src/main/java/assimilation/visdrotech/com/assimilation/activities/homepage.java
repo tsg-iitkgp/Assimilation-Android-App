@@ -1,13 +1,22 @@
 package assimilation.visdrotech.com.assimilation.activities;
 
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +30,8 @@ import android.widget.TextView;
 
 import assimilation.visdrotech.com.assimilation.R;
 import assimilation.visdrotech.com.assimilation.utils.baseApplicationClass;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class homepage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,9 +61,22 @@ public class homepage extends AppCompatActivity
             nav_Menu.findItem(R.id.nav_createEvent).setVisible(false);
 
         }
+        Boolean superAdminStatus = prefs.getBoolean("isSuperAdmin", false);
+        if (!(superAdminStatus)) {
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_complaint).setVisible(false);
+        }
         initialiseVariable();
+
+
         displayFragment(R.id.nav_upcomingevent);
+
+
+
     }
+
+
+
 
     private void initialiseVariable(){
         SharedPreferences prefs = getSharedPreferences(prefName, MODE_PRIVATE);
@@ -134,6 +158,10 @@ public class homepage extends AppCompatActivity
             case R.id.nav_changepassword :
                 fragment = new homepageFragmentChangePassword();
                 break;
+            case R.id.nav_complaint :
+                fragment = new homepageFragmnetComplaints();
+                break;
+
         }
         //replacing the fragment
         if (fragment != null) {
