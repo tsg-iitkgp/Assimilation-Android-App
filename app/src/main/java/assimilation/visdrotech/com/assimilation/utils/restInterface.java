@@ -4,6 +4,7 @@ package assimilation.visdrotech.com.assimilation.utils;
  * Created by defcon on 09/07/18.
  */
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -88,4 +89,10 @@ public interface restInterface {
     @FormUrlEncoded
     Call <complaintStatus> changeComplaintStatus(@Field("token") String token,
                                                  @Field("complaintId") String id);
+
+    @POST("api/markmultipleuserattendace")
+    @FormUrlEncoded
+    Call <singleStudentAttendance> markMultipleStudentAttendance(@Field("token") String token,
+            @Field("eventUid") String eventUid,
+            @Field("data") String data);
 }
